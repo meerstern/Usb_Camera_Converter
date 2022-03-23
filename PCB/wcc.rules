@@ -1,0 +1,114 @@
+
+(rules PCB wcc
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 12627)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 3.6)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.4)
+    )
+  )
+  (rule
+    (width 200.0)
+    (clear 180.2)
+    (clear 100.0 (type smd_to_turn_gap))
+    (clear 45.0 (type smd_smd))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_800:400_um-POW" "Via[0-1]_800:400_um" POW
+  )
+  (via 
+    "Via[0-1]_800:400_um-POW2" "Via[0-1]_800:400_um" POW2
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (via_rule
+    POW "Via[0-1]_800:400_um-POW"
+  )
+  (via_rule
+    POW2 "Via[0-1]_800:400_um-POW2"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    GND /XIN /XOUT "Net-(C5-Pad1)" "Net-(D2-Pad1)" /RUN "Net-(D3-Pad1)" /ERR
+    "Net-(D4-Pad1)" /RX /TX /RST "/M_SCK" "/M_MOSI" "/M_CS" "Net-(R4-Pad1)"
+    "/M_MISO" "Net-(BT1-Pad1)" "Net-(C19-Pad1)" "Net-(D5-Pad2)" "Net-(D5-Pad1)" "Net-(R6-Pad2)" "/RTC_INT" /SCL
+    /SDA "/PUSH_SW" "/EX_TRG" "Net-(C6-Pad1)" "/CDC_N" "/CDC_P" /PGEC /PGED
+    "/HOST_P" "/HOST_N" "/S_CS" "/S_MOSI" "/S_MISO" "/S_SCK" "Net-(R10-Pad1)" "Net-(R11-Pad1)"
+    "Net-(R13-Pad2)" "Net-(FB1-Pad1)" /PUSB
+    (clearance_class "kicad_default")
+    (via_rule kicad_default)
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class POW
+    /VIN +3V3 +5V "Net-(C12-Pad1)" "/USB_IN"
+    (clearance_class POW)
+    (via_rule POW)
+    (rule
+      (width 200.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class POW2
+    (clearance_class POW2)
+    (via_rule POW2)
+    (rule
+      (width 350.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

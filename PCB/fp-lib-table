@@ -1,0 +1,9 @@
+(fp_lib_table
+  (lib (name FA238V)(type KiCad)(uri ${KIPRJMOD}/FA238V.pretty)(options "")(descr ""))
+  (lib (name GroveCon)(type KiCad)(uri ${KIPRJMOD}/GroveCon.pretty)(options "")(descr ""))
+  (lib (name USBHOST)(type KiCad)(uri ${KIPRJMOD}/USBHOST.pretty)(options "")(descr ""))
+  (lib (name RTC_3215)(type KiCad)(uri ${KIPRJMOD}/RTC_3215.pretty)(options "")(descr ""))
+  (lib (name CR1220_2895)(type KiCad)(uri ${KIPRJMOD}/CR1220_2895.pretty)(options "")(descr ""))
+  (lib (name SMD_PUSHSWITCH)(type KiCad)(uri ${KIPRJMOD}/SMD_PUSHSWITCH.pretty)(options "")(descr ""))
+  (lib (name mUSB)(type KiCad)(uri ${KIPRJMOD}/mUSB.pretty)(options "")(descr ""))
+)

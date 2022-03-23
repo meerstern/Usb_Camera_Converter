@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name PIC32MX)(type Legacy)(uri ${KIPRJMOD}/PIC32MX.lib)(options "")(descr ""))
+  (lib (name RTC)(type Legacy)(uri ${KIPRJMOD}/RTC.lib)(options "")(descr ""))
+  (lib (name LDSW_SiP32431)(type Legacy)(uri ${KIPRJMOD}/LDSW_SiP32431.lib)(options "")(descr ""))
+  (lib (name PIC32MZ)(type Legacy)(uri ${KIPRJMOD}/PIC32MZ.lib)(options "")(descr ""))
+  (lib (name PL2303SA)(type Legacy)(uri ${KIPRJMOD}/PL2303SA.lib)(options "")(descr ""))
+)
