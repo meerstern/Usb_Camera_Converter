@@ -2,7 +2,9 @@
 #  Usb_Camera_Converter 
 This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class) standard Usb camera and converts it to a BMP or JPG image.
 
-
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img1.JPG" width="360">
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img2.JPG" width="360">
+ 
 ## 概要
   * 本変換基板はUVC規格のUsbカメラからキャプチャしてBMPもしくはJPG画像に変換する基板です  
   * シリアルUARTコマンドもしくは基板上のボタンを押すことで画像ファイルとして記録されます  
@@ -27,6 +29,9 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * microTFカードを介したファームウェアアップデート対応  
   * 各設定パラメータ情報は時刻と一緒に保持されます  
   * 基板サイズ　穴M3x4
+
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img3.JPG" width="360">
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img4.JPG" width="360">
 
 ## シリアルコンソール
   * インタラクティブなシリアルコンソールから各種設定を変更することができます  
@@ -62,7 +67,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * 代替インタフェースは1回のデータ転送のサイズを決定します  
   * 1回のデータ転送サイズが小さすぎる場合は画像フレームのタイミングに間に合わない可能性があります  
   * 1回のデータ転送サイズが大きすぎる場合は処理しきれない場合があります  
-  * カメラの機種によって対応する代替インタフェースの数や大きさが異なります  
+  * カメラの機種によって設定可能な代替インタフェース数やサイズが異なります  
   
   
 	
@@ -105,6 +110,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   6. trg!コマンドもしくはtrgピンをGNDに接続することで画像が保存されます  
   7. xmd!コマンドを送信後、xmodem(チェックサム有効)で受信できます  
   8. ymd!コマンドを送信後、ymodemで受信できます   
+  9. ユーザ側でコードを実装することでSPI等を介して外部機器と通信できます  
   
 ### c.日付/時刻設定する場合
   1. 本変換基板のmicroUSBをPC等に接続し、Teraterm等からシリアルコンソールにアクセスします   
