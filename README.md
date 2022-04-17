@@ -25,7 +25,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * microTFカード対応(microSD、microSDHC、microSDXC互換)、128GBまで動作確認済
   * 3色状態表示LED(青:電源、緑:ストリーミング中、赤:ストリーミングエラー)  
   * シリアルコンソールボーレート9600bps、データサイズ8bit、パリティ無、ストップ1bitが既定値です  
-  * シリアルコンソール用のUsbドライバ(PL2303SA)は[Windows版][2]、[Mac版][3]して使用してください  
+  * シリアルコンソール用のUsbドライバ(PL2303GL)は[Windows版][2]、[Mac版][3]して使用してください  
   * Linux版のシリアルコンソール用のUsbドライバはKernel 2.4.31以降、標準で組み込まれています  
   * microTFカードを介したファームウェアアップデート対応  
   * 各設定パラメータ情報は時刻と一緒に保持されます  
