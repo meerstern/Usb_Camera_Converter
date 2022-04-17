@@ -25,13 +25,14 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * microTFカード対応(microSD、microSDHC、microSDXC互換)、128GBまで動作確認済
   * 3色状態表示LED(青:電源、緑:ストリーミング中、赤:ストリーミングエラー)  
   * シリアルコンソールボーレート9600bps、データサイズ8bit、パリティ無、ストップ1bitが既定値です  
-  * シリアルコンソール用のUsbドライバ(PL2303SA)はこちらです  
+  * シリアルコンソール用のUsbドライバ(PL2303SA)は[Windows版][2]、[Mac版][3]して使用してください  
+  * Linux版のシリアルコンソール用のUsbドライバはKernel 2.4.31以降、標準で組み込まれています  
   * microTFカードを介したファームウェアアップデート対応  
   * 各設定パラメータ情報は時刻と一緒に保持されます  
-  * 基板サイズ　穴M3x4
+  * 基板サイズ25mm x65mm、穴M3x4(間隔19mm x43mm)
 
- <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img3.JPG" width="360">
- <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img4.JPG" width="360">
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img3.JPG" width="560">
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img4.JPG" width="560">
 
 ## シリアルコンソール
   * インタラクティブなシリアルコンソールから各種設定を変更することができます  
@@ -89,6 +90,9 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 | ファームアップデート |	fup! | なし | fup?(Enterキー) |
 | ヘルプ確認 |	help | なし | help(Enterキー) |
 
+
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img5.JPG" width="560">
+
 ## 使い方  
 ### a.単体で使用する場合  
   1. 本変換基板のmicroUSBをPC等に接続し、Teraterm等からシリアルコンソールにアクセスします    
@@ -132,7 +136,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 ## 注意点
   * マイコン上で処理する都合上、完全なUVC規格でありません  
   * カメラによって動作しないor不安定な場合があります  
-  * 動作確認済のUsbカメラはこちらのファイルをご確認ください  
+  * 動作確認済のUsbカメラはTestedCamera.csvをご確認ください  
   * ハイビジョン対応等の高機能カメラよりも200万画素程度の単機能カメラの方が安定して動く傾向があります  
   * 動画を切り出して画像に変換するため、最高でも1FPSです 高フレームレートを要求する用途には適しません  
   * ボタンやコマンドから取得命令後、ストリーミングデータから切り出し処理の都合上、タイムラグがあります  
@@ -146,7 +150,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
    -代替インタフェース設定(altコマンド)  
    -データフレームインターバル設定(dfiコマンド) 
   * 設定を変更することで必ず動作できる保証はありません   
-  * Xmodem/Ymodemによる転送は9600bpsの場合、1枚の画像で10分前後転送に要します  
+  * Xmodem/Ymodemによる転送は9600bpsの場合、1枚の画像で数10分前後転送に要します  
   * 各設定はソフトリセット後もしくは電源再投入後に反映されます  
   * 時刻管理電池の消耗や交換した場合、各設定パラメータ、時刻はリセットされます  
   * ファームウェアアップデート時はボーレート9600bpsで固定です   
@@ -158,3 +162,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * LCDのモニタはJPGの場合、TJPGD3ライブラリでデコードしてから描画します  
   　解像度幅160、320、640、1280のみ、一部のカメラは未対応  
   * コードを公開しています 改造することで他の機器とすることが可能です  
+
+
+[2]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41
+[3]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41
