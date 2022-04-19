@@ -1,0 +1,6 @@
+format_version: v1.0
+type: UniqueComponent
+attributes: {id: usb_host_audio}
+children:
+- type: ElementPosition
+  attributes: {x: '29', y: '141', id: usb_host_audio}

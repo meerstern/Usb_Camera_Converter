@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/config/default/usb/src/usb_host_uvc.c</url>
+            <bookmark id="1">
+                <name/>
+                <line>425</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/app.c</url>
+            <bookmark id="2">
+                <name/>
+                <line>384</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/app.c</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/ymodem.c</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/console.c</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/ymodem.h</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/config/default/peripheral/coretimer/plib_coretimer.c</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/config/default/peripheral/coretimer/plib_coretimer.h</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/xmodem.c</file>
+            <file>file:/D:/31_WS/PIC32/WCC_PIC32MZ/firmware/src/config/default/configuration.h</file>
+        </group>
+    </open-files>
+</project-private>
