@@ -8,28 +8,28 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 ## 概要
   * 本変換基板はUVC規格のUsbカメラからキャプチャしてBMPもしくはJPG画像に変換する基板です  
   * シリアルUARTコマンドもしくは基板上のボタンを押すことで画像ファイルとして記録されます  
-  * インターバル設定をすることで設定した秒数間隔(1秒~6か月程度)で自動的にインターバル記録できます  
+  * インターバル設定をすることで設定した秒数間隔(1秒~最長6か月程度)で自動的にインターバル記録できます  
   * 変換した画像はTFカード(microSD互換)もしくはXmodem、Ymodemでマイコン等に転送できます  
   * 時刻管理(RTC)を内蔵しており、自動的に日付のフォルダを生成し、日付日時のファイル名で保存されます  
   * 保存可能なファイル形式(BMP/JPG)および解像度は接続するUsbカメラによって異なります
-  * PCを介したシリアルコンソール上でインターバル設定やファイル形式、解像度の設定変更が可能です  
+  * PCを介したシリアルコンソール上でインターバル設定やファイル形式、解像度等の設定が可能です  
   * 高フレームレートを要求しない、簡易的な記録や監視に適しています  
   
 ## 仕様
   * 電源電圧5V、電流800mA(microUSBもしくはピンヘッダから供給)以上の電源  
-  * 時刻管理用電池CR1220搭載
+  * 時刻管理用電池CR1220搭載  
   * PIC32MZ USB HighSpeed(480MHz) Host機能によるUVCホスト(USBタイプA)  
   * PCを介したシリアルコンソール上から変更できるパラメータ:  
   記録インターバル、ファイル形式、画像解像度、日付時刻、  
   代替インタフェース設定、データフレームインターバル  
-  * microTFカード対応(microSD、microSDHC、microSDXC互換)、128GBまで動作確認済
+  * microTFカード対応(microSD、microSDHC、microSDXC互換)、128GBまで動作確認済  
   * 3色状態表示LED(青:電源、緑:ストリーミング中、赤:ストリーミングエラー)  
   * シリアルコンソールボーレート9600bps、データサイズ8bit、パリティ無、ストップ1bitが既定値です  
   * シリアルコンソール用のUsbドライバ(PL2303GL)は[Windows版][2]、[Mac版][3]して使用してください  
   * Linux版のシリアルコンソール用のUsbドライバはKernel 2.4.31以降、標準で組み込まれています  
   * microTFカードを介したファームウェアアップデート対応  
   * 各設定パラメータ情報は時刻と一緒に保持されます  
-  * 基板サイズ25mm x65mm、穴M3x4(間隔19mm x43mm)
+  * 基板サイズ25mm x65mm、穴M3x4(間隔19mm x43mm)  
 
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img3.JPG" width="560">
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img4.JPG" width="560">
@@ -63,7 +63,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 | データフレームインターバル設定 | dfi= | インデックス番号 | dfi=2(Enterキー) | 	
 | データフレームインターバル確認 | dfi? | なし | dfi?(Enterキー) | 
 
-  * インターバル記録しない場合がint=-1を設定します  
+  * インターバル記録しない場合はint=-1を設定します  
   * 代替インタフェース設定を自動にする場合はalt=0を設定します(既定値)  
   * 代替インタフェースは1回のデータ転送のサイズを決定します  
   * 1回のデータ転送サイズが小さすぎる場合は画像フレームのタイミングに間に合わない可能性があります  
@@ -144,6 +144,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * JPG形式の場合、解像度によって動作、非動作の場合があります  
   * 動画ファイル形式の記録はできません  
   * 電源不安定や電流が足りない場合、動作確認済のカメラであっても正常に動作しない場合があります  
+  * 電流が足りない場合、microUSBとJ5 5Vピンの両方から5V電源を供給することで動作する場合があります  
   * フォーマット、解像度のインデックス番号はカメラ機種によって番号や設定可能な条件数が異なります  
   * カメラによってはBMPをサポートしていないカメラがあります  
   * モードによって動作しない場合、下記の設定を変更することで動作する場合があります  
@@ -165,9 +166,10 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 ## 応用編
   * LCDファームに書き換えることでSPI対応LCD(160x128、ST7735S)でモニタすることが可能です  
   * LCDモニタはBMPの場合、160x120解像度のみ対応しています    
-  * LCDのモニタはJPGの場合、TJPGD3ライブラリでデコードしてから描画します  
+  * ENABLE_JPGDECODEを有効化することでTJPGD3ライブラリを用いてJPGからBMPにデコードして描画できます    
   　解像度幅160、320、640、1280のみ、一部のカメラは未対応  
   * コードを公開しています 改造することで他の機器とすることが可能です  
+  * UART(XMODEM/YMODEM)に比べてSPIを介して高速に転送できます  
 
 | LCDピン | 変換基板ピン |  
 |:-----------|:------------|
@@ -179,6 +181,8 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 | AO |	J3 PGED | 
 | RST |	J3 PGEC | 
 
+
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img6.gif" width="360">
 
 [2]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41
 [3]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41
