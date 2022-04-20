@@ -3,9 +3,15 @@
 This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class) standard Usb camera and converts it to a BMP or JPG image.
 
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img1.JPG" width="360">
+ 
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img2.JPG" width="360">
+ 
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img6.gif" width="360">
-  
+ 
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img7.gif" width="360">
+ 
+  * 10秒間隔インターバル記録した映像をコマ送り編集で動画化した例  
+ 
 ## 概要
   * 本変換基板はUVC規格のUsbカメラからキャプチャしてBMPもしくはJPG画像に変換する基板です  
   * シリアルUARTコマンドもしくは基板上のボタンを押すことで画像ファイルとして記録されます  
