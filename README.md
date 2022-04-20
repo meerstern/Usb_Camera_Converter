@@ -169,6 +169,16 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   　解像度幅160、320、640、1280のみ、一部のカメラは未対応  
   * コードを公開しています 改造することで他の機器とすることが可能です  
 
+| LCDピン | 変換基板ピン |  
+|:-----------|:------------|
+| VCC,LED | J7 3.3V | 
+| GND | J7 GND | 
+| CS |	J7 CS | 
+| SCK |	J7 SCK |   
+| SDA |	J7 MOSI | 
+| AO |	J3 PGED | 
+| RST |	J3 PGEC | 
+
 
 [2]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41
 [3]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41
