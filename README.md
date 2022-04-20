@@ -4,7 +4,8 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img1.JPG" width="360">
  <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img2.JPG" width="360">
- 
+ <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img6.gif" width="360">
+  
 ## 概要
   * 本変換基板はUVC規格のUsbカメラからキャプチャしてBMPもしくはJPG画像に変換する基板です  
   * シリアルUARTコマンドもしくは基板上のボタンを押すことで画像ファイルとして記録されます  
@@ -182,7 +183,7 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 | RST |	J3 PGEC | 
 
 
- <img src="https://github.com/meerstern/Usb_Camera_Converter/blob/main/IMG/img6.gif" width="360">
+
 
 [2]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=225&pcid=41
 [3]: http://www.prolific.com.tw/US/ShowProduct.aspx?p_id=229&pcid=41
