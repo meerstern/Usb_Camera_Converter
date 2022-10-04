@@ -208,6 +208,9 @@ typedef struct
     /* SDSPI0 Driver Object */
     SYS_MODULE_OBJ drvSDSPI0;
 
+    /* SPI0 Driver Object */
+    SYS_MODULE_OBJ drvSPI0;
+
     SYS_MODULE_OBJ  sysDebug;
 
     SYS_MODULE_OBJ  sysTime;

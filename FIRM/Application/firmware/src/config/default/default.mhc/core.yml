@@ -704,60 +704,6 @@ children:
       children:
       - type: User
         attributes: {value: 'True'}
-  - type: File
-    attributes: {id: CACHE_HEADER_H}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: CACHE_LOCAL_H}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: CACHE_PIC32MZ_H}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: CACHE_SOURCE_PIC32MZ_C}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: CACHE_SOURCE_PIC32MZ_S}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
-  - type: File
-    attributes: {id: CACHE_SYSTEM_DEF_H}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
   - type: Integer
     attributes: {id: CMP1_CLOCK_FREQUENCY}
     children:
@@ -1052,15 +998,6 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: '36624'}
-  - type: File
-    attributes: {id: DEVICE_CACHE_H}
-    children:
-    - type: Attributes
-      children:
-      - type: Boolean
-        attributes: {id: enabled}
-        children:
-        - {type: Value, value: 'true'}
   - type: Boolean
     attributes: {id: DMA0_INTERRUPT_ENABLE}
     children:
@@ -1251,6 +1188,20 @@ children:
       children:
       - type: Dynamic
         attributes: {id: core, value: 'true'}
+  - type: Boolean
+    attributes: {id: DMA_CH_NEEDED_FOR_SPI6_Receive}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
+  - type: Boolean
+    attributes: {id: DMA_CH_NEEDED_FOR_SPI6_Transmit}
+    children:
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: core, value: 'false'}
   - type: Boolean
     attributes: {id: DMA_CH_NEEDED_FOR_UART2_Receive}
     children:

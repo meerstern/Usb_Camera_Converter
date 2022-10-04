@@ -45,6 +45,8 @@ static uint32_t *ramStart = (uint32_t *)BTL_TRIGGER_RAM_START;
 #define STR_SET_DFINT           "dfi="
 #define STR_GET_DFINT           "dfi?"
 #define STR_SET_TRG             "trg!"
+#define STR_GET_MONO            "mon?" //BMP Mono 
+#define STR_SET_MONO            "mon=" //BMP Mono 
 /* System */
 #define STR_SET_BAUDRATE        "brt="
 #define STR_GET_BAUDRATE        "brt?"
@@ -215,6 +217,23 @@ void CheckConsoleCmd()
     {
         IsSwitchPushed=true;
     }
+    //Set Mono 
+    else if(strncmp(cmd,STR_SET_MONO,4) == 0)    //Triger
+    {
+        long num=0;
+        char *p=strpbrk( cmd, "1234567890" );        
+        if ( p != NULL ) num = atol( p ); 
+        if(num==0)
+            IsBitmapMonoMode=false;
+        else
+            IsBitmapMonoMode=true;        
+        SYS_DEBUG_PRINT(SYS_ERROR_WARNING, "Set Bitmap Mono Mode:%d\r\n", IsBitmapMonoMode); 
+    }
+    // Get Mono
+    else if(strncmp(cmd,STR_GET_MONO,4) == 0)
+    {        
+        SYS_DEBUG_PRINT(SYS_ERROR_WARNING, "Get Bitmap Mono Mode:%d\r\n", IsBitmapMonoMode);    
+    }    
     // Set Time
     else if(strncmp(cmd,STR_SET_TIME,4) == 0)
     {
@@ -379,6 +398,8 @@ void ConsoleDispHelp()
     SYS_DEBUG_PRINT(SYS_ERROR_WARNING," Interval Get Cmd: int?   \tex) int?\r\n");  
     SYS_DEBUG_PRINT(SYS_ERROR_WARNING," Interval Set Cmd: int=*[sec]\tex) int=1\r\n"); 
     SYS_DEBUG_PRINT(SYS_ERROR_WARNING," *If disable interval mode, set negative value\tex) int=-1\r\n"); 
+    SYS_DEBUG_PRINT(SYS_ERROR_WARNING," Bitmap Monochrome Mode Get: mon?  \tex) mon?\r\n");  
+    SYS_DEBUG_PRINT(SYS_ERROR_WARNING," Bitmap Monochrome Mode Set: mon=* \tex) mon=1\r\n"); 
      
     SYS_DEBUG_PRINT(SYS_ERROR_WARNING,"\r\n");
     
@@ -450,7 +471,8 @@ void ConsoleDispInfo()
     
     if(IsBitmapMode==true)
     {
-        Bitmap565InitBuf((uint8_t*)videoRam,sizeof(videoRam),uvcSettings[uvcSelectedSettingIndex].width,uvcSettings[uvcSelectedSettingIndex].height);    
+        Bitmap565InitBuf((uint8_t*)videoRam,sizeof(videoRam),uvcSettings[uvcSelectedSettingIndex].width,uvcSettings[uvcSelectedSettingIndex].height);
+        BitmapMonoInitBuf((uint8_t*)videoMono,sizeof(videoMono),uvcSettings[uvcSelectedSettingIndex].width,uvcSettings[uvcSelectedSettingIndex].height);
         if(videoRam[0]==0)
         {
             SYS_DEBUG_PRINT(SYS_ERROR_WARNING, "\r\nBMP RAM SIZE OVER ERR\r\n");

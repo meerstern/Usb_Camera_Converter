@@ -34,6 +34,20 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 93B81B181623661E2E461AB1D6436F6A
+- generatedChecksum: 536E07CE671B6A44C441D33328FAE434
+  logicalPath: config\default\driver\spi
+  name: drv_spi.c
+  physicalPath: driver\spi\src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 536E07CE671B6A44C441D33328FAE434
+- generatedChecksum: 9FADE1C7F9878091CC940DA770DEE4F1
+  logicalPath: config\default\driver\spi
+  name: drv_spi_local.h
+  physicalPath: driver\spi\src
+  security: NON_SECURE
+  type: SOURCE
+  userChecksum: 9FADE1C7F9878091CC940DA770DEE4F1
 - generatedChecksum: 8048089AA9DA0663AE185F78DF90D645
   logicalPath: config\default\driver\usb\usbhs\src
   name: drv_usbhs.c
@@ -69,13 +83,13 @@ files:
   security: NON_SECURE
   type: SOURCE
   userChecksum: 9E153A6D4F8E0EA1F6901BAED7DD80FD
-- generatedChecksum: 6CCB6CD49026D29DE9895BFF0C88B27E
+- generatedChecksum: D1D0874443D37A34C66B4F2755609334
   logicalPath: config\default
   name: initialization.c
   physicalPath: ''
   security: NON_SECURE
   type: SOURCE
-  userChecksum: 4F2359ACE18720B5384DAEDA166725E9
+  userChecksum: 42F7B18A4448D6D77B1AD8F083E135AB
 - generatedChecksum: F237034FA466B507283E4CF0A2BA05F7
   logicalPath: config\default
   name: interrupts.c
@@ -335,20 +349,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: null
-- generatedChecksum: 2C928C37E5272370A5FE4EE747DB419E
+- generatedChecksum: DC4BA359B7A722551D61251DA160F805
   logicalPath: config\default
   name: configuration.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 5C864384F1A84F5CEB295FB020C8922E
-- generatedChecksum: 6AB753F97001D8C87930DD09B0AE8E73
+  userChecksum: 804BDE9C411D2481E32C8F3BD54E80FA
+- generatedChecksum: 7911A2C86E81576F4978C1750B2DA73E
   logicalPath: config\default
   name: definitions.h
   physicalPath: ''
   security: NON_SECURE
   type: HEADER
-  userChecksum: 3B5DA93F8CB3453CB1411663BF7071A3
+  userChecksum: 55499608AC80926BEDC759367C206C76
 - generatedChecksum: E189C26B2269F8DE46033CCD0621958D
   logicalPath: config\default
   name: device.h
@@ -412,6 +426,20 @@ files:
   security: NON_SECURE
   type: HEADER
   userChecksum: 050223C260DEA418F4C01E2CCC986197
+- generatedChecksum: 53AD078A2F507226A6BDA2DBFEA03430
+  logicalPath: config\default\driver\spi
+  name: drv_spi.h
+  physicalPath: driver\spi
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: 53AD078A2F507226A6BDA2DBFEA03430
+- generatedChecksum: E2CB59CF36535862BE10D0969882502A
+  logicalPath: config\default\driver\spi
+  name: drv_spi_definitions.h
+  physicalPath: driver\spi
+  security: NON_SECURE
+  type: HEADER
+  userChecksum: E2CB59CF36535862BE10D0969882502A
 - generatedChecksum: DF147276AE56CA76E3E9BEB8447620AB
   logicalPath: config\default\driver\usb
   name: drv_usb.h

@@ -9,6 +9,7 @@
 #define BITMAP_H_
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "configuration.h"
 
 
@@ -161,13 +162,12 @@
 #define  BITMAP_WHITE_SMOKE                0xF5F5F5
 #define  BITMAP_WHITE                      0xFFFFFF
 
-
+/* RGB565 Functions */
 uint32_t Bitmap565GetWidth(uint8_t* buffer);
 uint32_t Bitmap565GetHeight(uint8_t* buffer);
 uint32_t Bitmap565GetFileSize(uint8_t* buffer);
 uint32_t Bitmap565GetImageSize(uint8_t* buffer);
 uint32_t Bitmap565GetOffset(uint8_t* buffer);
-
 
 void Bitmap565InitBuf(uint8_t *buffer, uint32_t bufferSize, uint32_t width, uint32_t height);
 void __inline Bitmap565SetPixel(uint8_t* buffer, uint32_t x, uint32_t y, uint16_t color);
@@ -177,7 +177,16 @@ void Bitmap565GetPixelRGB(uint8_t* buffer, uint32_t x, uint32_t y, uint8_t* r, u
 void Bitmap565DrawRectRGB(uint8_t* buffer, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1, uint8_t r, uint8_t g, uint8_t b);
 void Bitmap565FillRGB(uint8_t* buffer, uint8_t r, uint8_t g, uint8_t b);
 
+/* Mono Functions */
+uint32_t BitmapMonoGetFileSize(uint8_t* buffer);
 
+void BitmapMonoInitBuf(uint8_t *buffer, uint32_t bufferSize, uint32_t width, uint32_t height);
+void BitmapMonoSetPixel(uint8_t* buffer, uint32_t x, uint32_t y, bool bit);
+void BitmapMonoDrawRect(uint8_t* buffer, uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1, bool bit);
+void BitmapMonoFill(uint8_t* buffer, bool bit);
+
+/* Conversion Functions */
+void BitmapRGB565toMono(uint8_t *rgb565Buff, uint8_t *monoBuff);
 
 
 #endif /* BITMAP_H_ */

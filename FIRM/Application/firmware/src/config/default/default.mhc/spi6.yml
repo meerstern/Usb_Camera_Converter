@@ -25,6 +25,32 @@ children:
       children:
       - type: Dynamic
         attributes: {id: spi6, value: '2'}
+  - type: Boolean
+    attributes: {id: SPI_INTERRUPT_MODE}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: spi6, value: 'true'}
+  - type: KeyValueSet
+    attributes: {id: SPI_MSTR_MODE_EN}
+    children:
+    - type: Attributes
+      children:
+      - type: Boolean
+        attributes: {id: readOnly}
+        children:
+        - {type: Value, value: 'true'}
+    - type: Values
+      children:
+      - type: Dynamic
+        attributes: {id: spi6, value: '0'}
   - type: KeyValueSet
     attributes: {id: SPI_SPICON_MSSEN}
     children:
@@ -32,5 +58,20 @@ children:
       children:
       - type: User
         attributes: {value: '1'}
+- type: Attachments
+  children:
+  - type: DirectCapability
+    attributes: {id: SPI6_SPI}
+    children:
+    - type: Attributes
+      children:
+      - type: String
+        attributes: {id: targetComponentID}
+        children:
+        - {type: Value, value: drv_spi_0}
+      - type: String
+        attributes: {id: targetAttachmentID}
+        children:
+        - {type: Value, value: drv_spi_SPI_dependency}
 - type: ElementPosition
-  attributes: {x: '809', y: '119', id: spi6}
+  attributes: {x: '666', y: '266', id: spi6}

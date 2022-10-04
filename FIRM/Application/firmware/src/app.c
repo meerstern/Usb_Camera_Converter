@@ -72,6 +72,7 @@
 APP_DATA USB_ALIGN             appData;
 
 bool                           IsBitmapMode    = false;//True:Bitmap, False:Jpeg
+bool                           IsBitmapMonoMode= false;//True:Mono,   False:Color
 bool                           IsSettingMode   = false;//True:SettingMode, False:Streaming Mode
 bool                           IsSwitchPushed  = false;
 bool                           IsXmodemMode    = false;
@@ -88,6 +89,7 @@ uint8_t                        uvcDataFrameIntervalIndex=0;
 
 uint8_t                        videoSamples[5150];
 uint16_t                       videoRam[80000];//23380
+uint8_t                        videoMono[10000];
 
 volatile bool                  ramDataReady=false;
 volatile uint32_t              ramDataCount=0;
@@ -527,8 +529,9 @@ void APP_Tasks ( void )
                     int d = U-128;
                     int e = V-128;
                     uint16_t buff1,buff2;
+#ifdef ENABLE_LCD 
                     uint16_t spiBuff1,spiBuff2;
-                    
+#endif                   
                     c *= 298;
 
                     b = (c + 516*d + 128) >> 8;   // blue
@@ -686,12 +689,12 @@ void APP_Tasks ( void )
                             {
 
 #ifdef ENABLE_JPGDECODE
-                                uint32_t jpgSize= ramDataCount*sizeof(videoRam[0]); 
-                                uint32_t bmpSize=0;
-                                uint8_t  *bmpData;
-                                uint32_t i=0;
-                                bool jres=false;
-                                uint16_t width=uvcSettings[uvcSelectedSettingIndex].width;
+                                uint32_t jpgSize = ramDataCount*sizeof(videoRam[0]); 
+                                uint32_t bmpSize = 0;
+                                uint8_t  *bmpData = NULL;
+                                uint32_t i = 0;
+                                bool jres = false;
+                                uint16_t width = uvcSettings[uvcSelectedSettingIndex].width;
                                 if(width%LCD_WIDTH_FOR_DECODE==0)
                                 {
                                     jres=checkJpegFile((uint8_t*)videoRam, &jpgSize);
@@ -721,7 +724,7 @@ void APP_Tasks ( void )
                                 if(jres==true)
                                 {
                                     m_LCDDCBit=1;
-                                    START_WRITE();
+                                    SPI_CS_LOW();
                                     SPI6CONbits.MODE16=1;
 
                                     JpegDecodeBmpData(bmpData, &bmpSize);
@@ -738,7 +741,7 @@ void APP_Tasks ( void )
                                     }
                                     //while(SPI6STATbits.SPIBUSY == 1);
                                     SPI6CONbits.MODE16=0;
-                                    END_WRITE();
+                                    SPI_CS_HIGH();
                                 }
 #endif
                               
@@ -758,15 +761,34 @@ void APP_Tasks ( void )
                             if(IsSwitchPushed==true )
                             {
                                 getFileName(filename, IsBitmapMode);
-                                saveBitmap((uint8_t*)videoRam,Bitmap565GetFileSize((uint8_t*)videoRam),filename);
+                                if(IsBitmapMonoMode==true)
+                                {
+                                    BitmapRGB565toMono((uint8_t*)videoRam, (uint8_t*)videoMono);
+                                    saveBitmap((uint8_t*)videoMono,BitmapMonoGetFileSize((uint8_t*)videoMono),filename);
+                                }
+                                else
+                                {
+                                     saveBitmap((uint8_t*)videoRam,Bitmap565GetFileSize((uint8_t*)videoRam),filename);
+                                }
+                                
                                 IsSwitchPushed=false;
                             }
                             else if(IsXmodemMode==true)
                             {
                                 uint32_t size;
-                                size = Bitmap565GetFileSize((uint8_t*)videoRam); 
-                                XmodemInit(size, (uint8_t*)videoRam);
                                 
+                                if(IsBitmapMonoMode==true)
+                                {
+                                    BitmapRGB565toMono((uint8_t*)videoRam, (uint8_t*)videoMono);
+                                    size = BitmapMonoGetFileSize((uint8_t*)videoMono); 
+                                    XmodemInit(size, (uint8_t*)videoMono);
+                                }
+                                else
+                                {
+                                    size = Bitmap565GetFileSize((uint8_t*)videoRam); 
+                                    XmodemInit(size, (uint8_t*)videoRam);
+                                }
+                                                                
                                 while(XmodemGetState()<XMODEM_STATE_ACK)
                                 {
                                     consoleReadSize = SYS_CONSOLE_Read( consoleHandle, consoleBuffer, sizeof(consoleBuffer) );
@@ -782,8 +804,19 @@ void APP_Tasks ( void )
                                 char filename[25]={'\0'};
                                 uint32_t size;
                                 getFileName(filename, IsBitmapMode);
-                                size = Bitmap565GetFileSize((uint8_t*)videoRam); 
-                                YmodemSendInit(size, (uint8_t*)videoRam, (uint8_t*)filename);                                
+                                
+                                if(IsBitmapMonoMode==true)
+                                {
+                                    BitmapRGB565toMono((uint8_t*)videoRam, (uint8_t*)videoMono);
+                                    size = BitmapMonoGetFileSize((uint8_t*)videoMono);
+                                    YmodemSendInit(size, (uint8_t*)videoMono, (uint8_t*)filename);  
+                                }
+                                else
+                                {
+                                    size = Bitmap565GetFileSize((uint8_t*)videoRam); 
+                                    YmodemSendInit(size, (uint8_t*)videoRam, (uint8_t*)filename);  
+                                }                                                          
+                                
                                 while(YmodemGetState()<YMODEM_STATE_ACK3)
                                 {
                                     consoleReadSize = SYS_CONSOLE_Read( consoleHandle, consoleBuffer, sizeof(consoleBuffer) );

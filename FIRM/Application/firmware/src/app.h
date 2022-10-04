@@ -69,7 +69,7 @@ extern "C" {
     #define FIRMWARE_NAME       "\tUSB Camera Converter\t"    
 #endif
 
-#define FIRMWARE_VERSION    "v1.0.0"    
+#define FIRMWARE_VERSION    "v1.1.0"    
     
 #define clip(n) { if(n<0) n=0; else if(n>255) n=255; }
     
@@ -366,10 +366,12 @@ extern uint8_t                        uvcAlternateInterfaceIndex;
 extern uint8_t                        uvcDataFrameIntervalIndex;
 
 extern bool IsBitmapMode;
+extern bool IsBitmapMonoMode;
 extern bool IsSettingMode;
 
 extern uint8_t             videoSamples[5150];
 extern uint16_t            videoRam[80000];//23380
+extern uint8_t             videoMono[10000];
 
 extern int32_t                        intervalTime;
 extern int32_t                       intervalTimeNext;
