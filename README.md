@@ -69,6 +69,8 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 | 代替インタフェース確認 | alt? | なし | alt?(Enterキー) | 	
 | データフレームインターバル設定 | dfi= | インデックス番号 | dfi=2(Enterキー) | 	
 | データフレームインターバル確認 | dfi? | なし | dfi?(Enterキー) | 
+| Bmp形式白黒変換モード設定 | mon= | 0 or 1 | mon=1(Enterキー) | 	
+| Bmp形式白黒変換モード確認 | mon? | なし | mon?(Enterキー) | 
 
   * インターバル記録しない場合はint=-1を設定します  
   * 代替インタフェース設定を自動にする場合はalt=0を設定します(既定値)  
@@ -76,8 +78,9 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
   * 1回のデータ転送サイズが小さすぎる場合は画像フレームのタイミングに間に合わない可能性があります  
   * 1回のデータ転送サイズが大きすぎる場合は処理しきれない場合があります  
   * カメラの機種によって設定可能な代替インタフェース数やサイズが異なります  
+  * Bmp形式白黒変換モードはファームバージョンv1.1.0以降で対応しています  
   
-  
+	
 	
   * データフレームインターバルを自動にする場合はdfi=0を設定します(既定値)  
   * データフレームインターバルはデータ転送の間隔、カメラのフレームレートを決定します  
