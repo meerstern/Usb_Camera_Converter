@@ -194,8 +194,10 @@ This board with PIC32MZ is a converter that captures from a UVC(Usb Video Class)
 | AO |	J3 PGED | 
 | RST |	J3 PGEC | 
 
-
+## 販売サイト
+  * [スイッチサイエンス][4]
 
 
 [2]: https://www.prolific.com.tw/UserFiles/files/PL23XX_Prolific_DriverInstaller_v408.zip
 [3]: https://www.prolific.com.tw/UserFiles/files/PL2303HXD_G_Mac%20Driver_v2_1_0_20210311.zip
+[4]: https://www.switch-science.com/products/8130
